@@ -1,4 +1,4 @@
-#内核模块 Linux最简单的内核模块，入门内核编程和设备驱动开发
+# 内核模块 Linux最简单的内核模块，入门内核编程和设备驱动开发
 1.vim hello.c
 2.make
 3.sudo insmod hello.ko
