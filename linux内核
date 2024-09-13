@@ -1,0 +1,22 @@
+1内核模块 Linux最简单的内核模块，入门内核编程和设备驱动开发
+1.vim hello.c
+2.make
+3.sudo insmod hello.ko
+4.lsmod
+5.demsg
+6.sudo rmmod hello
+
+
+linux 指令
+1.sudo insmod hello.ko
+2.cat /proc/modeles
+
+
+1.ls /sys/module/hello
+
+
+视频链接
+https://www.youtube.com/watch?v=triv8bcVLSQ&list=PLHpfx416EzLP2ns3uCecrL1EaDucr33ow
+
+如何在github中添加图片
+https://www.bilibili.com/video/BV1TA411V7ve/?spm_id_from=333.337.search-card.all.click&vd_source=1272389d62e4132856a7fb0dba790db0
