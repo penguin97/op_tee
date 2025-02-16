@@ -305,7 +305,7 @@ install:
 
 ## 五、总结
 
-Makefile 是一个强大的工具。
+Makefile 是一个强大的工具[^1][^2]。
 
 [^1]:[makefile 菜鸟教程](https://www.cainiaoya.com/makefile/makefile-directives.html)  
 [^2]:[makefile 教程 廖雪峰](https://liaoxuefeng.com/books/makefile/install-make/index.html)
