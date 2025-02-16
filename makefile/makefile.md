@@ -149,25 +149,29 @@ clean:
    CC = gcc
    CFLAGS = -Wall -O2
    ```
+   
    或者
+   
    ```makefile
    CC := gcc
    CFLAGS := -Wall -O2
    ```
-   
+
 3.**变量引用**
-   
-   - 引用变量时，可以使用 `$(VARIABLE)` 或 `${VARIABLE}` 的方式。这两种方式是等价的，但 `${VARIABLE}` 在某些情况下可以提高可读性。例如：
-     
-   ```makefile
-   target: dependencies
-      $(CC) $(CFLAGS) -o $@ $<
-   ``` 
-   或者 
-   ```makefile
-   target: dependencies
-      ${CC} ${CFLAGS} -o $@ $<
-   ```
+
+- 引用变量时，可以使用 `$(VARIABLE)` 或 `${VARIABLE}` 的方式。这两种方式是等价的，但 `${VARIABLE}` 在某些情况下可以提高可读性。例如：
+  
+  ```makefile
+  target: dependencies
+   $(CC) $(CFLAGS) -o $@ $<
+  ```
+  
+  或者 
+  
+  ```makefile
+  target: dependencies
+   ${CC} ${CFLAGS} -o $@ $<
+  ```
 
 ### （四）模式规则
 
