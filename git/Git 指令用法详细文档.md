@@ -297,7 +297,7 @@ Git 是一个强大的分布式版本控制系统，广泛应用于软件开发�
   
   假设我们有两个分支：`master` 和 `feature`。`feature` 分支是从 `master` 分支的某个提交（如 `B`）派生出来的。在 `feature` 分支创建之后，`master` 分支又有了新的提交（`C`、`D`），同时 `feature` 分支也有自己的提交（`E`、`F`）。
   
-  ![](https://github.com/penguin97/op_tee/blob/master/git/images/2025-02-08-14-38-57-image.png)
+  ![](https://github.com/penguin97/LearningSpace/blob/master/git/images/2025-02-08-14-38-57-image.png)
   
 ##### 2. 切换到 `feature` 分支
   
@@ -309,19 +309,19 @@ Git 是一个强大的分布式版本控制系统，广泛应用于软件开发�
   
   此时 `HEAD` 指针指向 `feature` 分支的最新提交 `F`。
   
-  ![](https://github.com/penguin97/op_tee/blob/master/git/images/2025-02-08-14-39-06-image.png)
+  ![](https://github.com/penguin97/LearningSpace/blob/master/git/images/2025-02-08-14-39-06-image.png)
   
 ##### 3. 执行 `git rebase master`
   
   当执行 `git rebase master` 命令时，Git 会将 `feature` 分支的提交（`E`、`F`）暂时保存起来，然后将 `feature` 分支的指针移动到 `master` 分支的最新提交 `D` 上，最后再将之前保存的提交（`E`、`F`）依次应用到 `D` 之后，形成新的提交 `E'`、`F'`。
   
-  ![](https://github.com/penguin97/op_tee/blob/master/git/images/2025-02-08-14-39-13-image.png)
+  ![](https://github.com/penguin97/LearningSpace/blob/master/git/images/2025-02-08-14-39-13-image.png)
   
 ##### 4. 处理冲突情况
   
   在变基过程中，如果出现冲突，Git 会暂停变基操作。例如，在应用 `E` 提交（变成 `E'`）时出现冲突，图示如下：
   
-  ![](https://github.com/penguin97/op_tee/blob/master/git/images/2025-02-08-14-39-21-image.png)
+  ![](https://github.com/penguin97/LearningSpace/blob/master/git/images/2025-02-08-14-39-21-image.png)
   
   解决冲突后，执行 `git add <resolved-file>` 和 `git rebase --continue`，继续变基操作，直到所有提交都应用完毕。
   
@@ -329,7 +329,7 @@ Git 是一个强大的分布式版本控制系统，广泛应用于软件开发�
   
   当所有提交都成功应用后，`feature` 分支的提交历史就变成了一条线性的历史，基于 `master` 分支的最新状态。
   
-  ![](https://github.com/penguin97/op_tee/blob/master/git/images/2025-02-08-14-39-29-image.png)
+  ![](https://github.com/penguin97/LearningSpace/blob/master/git/images/2025-02-08-14-39-29-image.png)
   
   通过以上图示，你可以清晰地看到 `git rebase` 命令是如何将一个分支的修改应用到另一个分支上，并整理提交历史的。同时，也能了解到在变基过程中遇到冲突时的处理方式和状态变化。
   
@@ -377,7 +377,7 @@ Git 是一个强大的分布式版本控制系统，广泛应用于软件开发�
   
   假设我们有两个分支：`master` 和 `feature`。`master` 分支上有一系列提交（`A`、`B`、`C`），`feature` 分支从 `master` 分支的 `B` 提交处派生出来，并且有自己的提交（`D`、`E`）。
   
-  ![](https://github.com/penguin97/op_tee/blob/master/git/images/2025-02-08-14-14-18-image.png)
+  ![](https://github.com/penguin97/LearningSpace/blob/master/git/images/2025-02-08-14-14-18-image.png)
   
 ##### 2. 切换到目标分支
   
@@ -389,25 +389,25 @@ Git 是一个强大的分布式版本控制系统，广泛应用于软件开发�
   
   切换后，`HEAD` 指针指向 `master` 分支的最新提交 `C`。
   
-  ![](https://github.com/penguin97/op_tee/blob/master/git/images/2025-02-08-14-14-25-image.png)
+  ![](https://github.com/penguin97/LearningSpace/blob/master/git/images/2025-02-08-14-14-25-image.png)
   
 ##### 3. 执行 `git cherry-pick`
   
   接着执行 `git cherry-pick E`（这里 `E` 代表提交 `E` 的哈希值），Git 会将 `E` 提交的修改复制到 `master` 分支上，并在 `master` 分支上创建一个新的提交 `E'`（虽然内容和 `E` 一样，但哈希值不同）。
   
-  ![](https://github.com/penguin97/op_tee/blob/master/git/images/2025-02-08-14-14-56-image.png)
+  ![](https://github.com/penguin97/LearningSpace/blob/master/git/images/2025-02-08-14-14-56-image.png)
   
 ##### 4. 多次 `cherry-pick` 场景
   
   如果我们还想把 `feature` 分支上的 `D` 提交也应用到 `master` 分支上，再次执行 `git cherry-pick D`。此时，Git 会在 `E'` 提交之后创建一个新的提交 `D'`。
   
-  ![](https://github.com/penguin97/op_tee/blob/master/git/images/2025-02-08-14-15-04-image.png)
+  ![](https://github.com/penguin97/LearningSpace/blob/master/git/images/2025-02-08-14-15-04-image.png)
   
 ##### 5. 处理冲突情况
   
   在 `cherry-pick` 过程中，如果出现冲突，Git 会暂停操作并提示你解决冲突。假设在 `cherry-pick E` 时出现冲突，图示如下：
   
-  ![](https://github.com/penguin97/op_tee/blob/master/git/images/2025-02-08-14-15-16-image.png)
+  ![](https://github.com/penguin97/LearningSpace/blob/master/git/images/2025-02-08-14-15-16-image.png)
   
   解决冲突后，执行 `git add <resolved-file>` 和 `git cherry-pick --continue`，完成 `cherry-pick` 操作，最终会生成新提交 `E'`。
   这些图示清晰地展示了 `git cherry-pick` 的工作流程，包括正常操作和冲突处理的情况，帮助你更好地理解该命令的使用和效果。
@@ -444,13 +444,13 @@ Git 是一个强大的分布式版本控制系统，广泛应用于软件开发�
   
   假设当前仓库有两个分支：`master` 和 `feature`，`HEAD` 指针指向 `master` 分支，工作区和暂存区的内容与 `master` 分支的最新提交一致。可以用以下图示表示：
   
-  ![](https://github.com/penguin97/op_tee/blob/master/git/images/2025-02-08-14-07-14-image.png)
+  ![](https://github.com/penguin97/LearningSpace/blob/master/git/images/2025-02-08-14-07-14-image.png)
   
   **执行 `git checkout feature`** 
   
   当执行 `git checkout feature` 命令时，`HEAD` 指针会从 `master` 分支切换到 `feature` 分支，工作区和暂存区的内容会更新为 `feature` 分支最新提交的内容。图示如下：
   
-  ![](https://github.com/penguin97/op_tee/blob/master/git/images/2025-02-08-14-07-32-image.png)
+  ![](https://github.com/penguin97/LearningSpace/blob/master/git/images/2025-02-08-14-07-32-image.png)
   
 ##### 2. 切换到指定提交（分离 HEAD 状态）
   
@@ -458,19 +458,19 @@ Git 是一个强大的分布式版本控制系统，广泛应用于软件开发�
   
   同样假设仓库有 `master` 和 `feature` 分支，当前 `HEAD` 指向 `master` 分支的最新提交。
   
-  ![](https://github.com/penguin97/op_tee/blob/master/git/images/2025-02-08-14-07-51-image.png)
+  ![](https://github.com/penguin97/LearningSpace/blob/master/git/images/2025-02-08-14-07-51-image.png)
   
   **执行 `git checkout commit B**
   
   当执行 `git checkout <commit B 的哈希值>` 时，`HEAD` 会直接指向指定的提交 `commit B`，此时处于分离 `HEAD` 状态，即 `HEAD` 不再指向任何分支。
   
-  ![](https://github.com/penguin97/op_tee/blob/master/git/images/2025-02-08-14-08-07-image.png)
+  ![](https://github.com/penguin97/LearningSpace/blob/master/git/images/2025-02-08-14-08-07-image.png)
   
   **从分离 `HEAD` 状态创建新分支**
   
   如果在分离 `HEAD` 状态下进行了一些修改并想保存为一个新分支，可以执行 `git checkout -b new-branch`。这时会创建一个新分支 `new-branch`，并让 `HEAD` 指向这个新分支。
   
-  ![](https://github.com/penguin97/op_tee/blob/master/git/images/2025-02-08-14-08-22-image.png)
+  ![](https://github.com/penguin97/LearningSpace/blob/master/git/images/2025-02-08-14-08-22-image.png)
   
 ##### 3. 使用 `git checkout` 恢复文件到指定版本
   
@@ -478,13 +478,13 @@ Git 是一个强大的分布式版本控制系统，广泛应用于软件开发�
   
   假设当前工作区的 `file.txt` 文件相对于 `master` 分支的最新提交有了修改，暂存区也有一些文件。
   
-  ![](https://github.com/penguin97/op_tee/blob/master/git/images/2025-02-08-14-08-40-image.png)
+  ![](https://github.com/penguin97/LearningSpace/blob/master/git/images/2025-02-08-14-08-40-image.png)
   
   **执行 `git checkout commit A -- file.txt**
   
   执行 `git checkout <commit A 的哈希值> -- file.txt` 命令后，工作区的 `file.txt` 文件会恢复到 `commit A` 时的状态。
   
-  ![](https://github.com/penguin97/op_tee/blob/master/git/images/2025-02-08-14-08-53-image.png)
+  ![](https://github.com/penguin97/LearningSpace/blob/master/git/images/2025-02-08-14-08-53-image.png)
   
   这些图示和说明展示了 `git checkout` 命令在不同场景下的作用和影响，有助于理解该命令的工作原理。
   
@@ -610,31 +610,31 @@ Git 是一个强大的分布式版本控制系统，广泛应用于软件开发�
    
    假设你正在一个 `feature` 分支上进行开发，工作区有一些修改还未提交，暂存区也有部分文件已添加。此时的状态可以用下面的图来表示：
    
-   ![](https://github.com/penguin97/op_tee/blob/master/git/images/2025-02-08-13-25-59-image.png)
+   ![](https://github.com/penguin97/LearningSpace/blob/master/git/images/2025-02-08-13-25-59-image.png)
    
 #### 6.4.2 执行 `git stash`
    
    当你执行 `git stash` 命令后，工作区和暂存区的修改会被保存到一个 stash 栈中，工作区和暂存区恢复到上一次提交时的干净状态。
    
-   ![](https://github.com/penguin97/op_tee/blob/master/git/images/2025-02-08-11-12-35-image.png)
+   ![](https://github.com/penguin97/LearningSpace/blob/master/git/images/2025-02-08-11-12-35-image.png)
    
 #### 6.4.3 切换分支处理其他任务
    
    此时你可以自由地切换到其他分支（如 `master` 分支）处理紧急任务，因为工作区是干净的，不会受到之前未完成工作的影响。
    
-   ![](https://github.com/penguin97/op_tee/blob/master/git/images/2025-02-08-13-26-25-image.png)
+   ![](https://github.com/penguin97/LearningSpace/blob/master/git/images/2025-02-08-13-26-25-image.png)
    
 #### 6.4.4 执行 `git stash pop`
    
    当你完成其他任务，切换回 `feature` 分支后，执行 `git stash pop` 命令，stash 栈中最近的一条记录会被应用到工作区和暂存区，并且该记录会从 stash 栈中删除。
    
-   ![](https://github.com/penguin97/op_tee/blob/master/git/images/2025-02-08-13-26-40-image.png)
+   ![](https://github.com/penguin97/LearningSpace/blob/master/git/images/2025-02-08-13-26-40-image.png)
    
 #### 6.4.5 多次 stash 情况
    
    如果你多次执行 `git stash` 命令，stash 栈中会有多个记录，栈顶的记录是最近保存的。例如，执行了两次 `git stash` 后：
    
-   ![](https://github.com/penguin97/op_tee/blob/master/git/images/2025-02-08-13-26-59-image.png)
+   ![](https://github.com/penguin97/LearningSpace/blob/master/git/images/2025-02-08-13-26-59-image.png)
    
    当执行 `git stash pop stash@{1}` 时，会应用 `stash@{1}` 的记录并从栈中删除它，栈中的其他记录顺序会相应调整。
    
